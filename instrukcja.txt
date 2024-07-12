@@ -1,0 +1,42 @@
+1. Uruchomienie.
+npm init -> utowrzenie package.json
+npm install --save-dev electron -> instalacja biblioteki
+const { app, BrowserWindow } = require('electron') -> dodanie bibliotek do uruchomienia programu (do main.js)
+app -> kontroluje cykl życia aplikacji
+BrowserWindow -> tworzy i zarządza oknem aplikacji
+
+Utworzenie okna
+const createWindow = () => {
+  const win = new BrowserWindow({
+    width: 800,
+    height: 600
+  })
+
+  win.loadFile('index.html')
+  win.maximize() -> otwiera w całym oknie
+}
+
+app.whenReady().then(() => { 
+  createWindow();
+});
+
+const path = require('node:path') -> do używania path.join()
+__dirname -> ścieżka aktualnego pliku w którym wykonywany jest kod
+path.join(__dirname, 'preload.js') -> łączy folder i nazwę pliku
+
+2. Budowanie aplikacji.
+- npm install --save-dev @electron-forge/cli
+- npx electron-forge import
+- npm run make
+- npm i @electron-forge/maker-wix lub npm i --save-dev electron-wix-msi -> instalator msi
+
+W forge.config.js
+{
+  name: '@electron-forge/maker-wix',
+  config: {
+    ui: {
+      chooseDirectory: true,
+    },
+    language: 0x0415
+  }
+}
