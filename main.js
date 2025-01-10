@@ -14,11 +14,11 @@ const template = [
       { 
         role: 'reload',
         accelerator: 'F5'
-       },
+      },
       { 
         role: 'forceReload',
         accelerator: 'Ctrl+F5'
-       },
+      },
       { 
         role: 'toggleDevTools', 
         accelerator: 'F12' 
